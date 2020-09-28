@@ -8,6 +8,8 @@ const useStorage = (file) =>{
     useEffect(() => {
         //refs
         const storageRef = projectStorage.ref(file.name);
+        const collectionRef = projectFirestore.collection('images');
+    
         storageRef.put(file).on('state_change', (snap) => {
             let percentage = (snap.bytesTransferred / snap.totalBytes)*100
             setProgress(percentage);
